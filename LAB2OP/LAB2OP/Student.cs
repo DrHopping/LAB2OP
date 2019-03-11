@@ -16,7 +16,7 @@ namespace LAB2OP
             this.average = AverageMark(marks);
         }
 
-        static Student FromCsv(string line)
+        public static Student FromCsv(string line)
         {
             string name = line.Substring(0, line.IndexOf(","));
 
