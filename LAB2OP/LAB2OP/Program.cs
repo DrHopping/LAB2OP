@@ -37,14 +37,14 @@ namespace LAB2OP
             int number = 0;
             for (int i = 0; i < students.Length; i++)
             {
-                if (!students[i].isContract) i++;
+                if (!students[i].isContract) number++;
             }
             return number;
         }
 
         static Student[] GetScholars(Student[] students)
         {
-            return students.OrderByDescending(student => student.average).OrderByDescending(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)/scholarshipPercentage)).ToArray();
+            return students.OrderByDescending(student => student.average).OrderByDescending(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)*scholarshipPercentage)).ToArray();
         }
 
         static void SaveRating(string file, Student[] scholars)
