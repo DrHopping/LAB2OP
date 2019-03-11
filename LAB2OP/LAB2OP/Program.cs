@@ -29,5 +29,21 @@ namespace LAB2OP
             }
             return students;
         }
+
+        static int NumberOfBudgetStudents(Student[] students)
+        {
+            int number = 0;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (!students[i].isContract) i++;
+            }
+            return number;
+        }
+
+        static Student[] GetScholars(Student[] students)
+        {
+            return students.OrderBy(student => student.average).OrderBy(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)/scholarshipPercentage)).ToArray();
+        }
+
     }
 }
