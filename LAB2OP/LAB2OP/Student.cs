@@ -6,12 +6,14 @@ namespace LAB2OP
         public string name;
         public int[] marks;
         public bool isContract;
+        public double average;
 
         public Student(string name, int[] marks, bool isContract)
         {
             this.name = name;
             this.marks = marks;
             this.isContract = isContract;
+            this.average = AverageMark(marks);
         }
 
         static Student FromCsv(string line)
@@ -29,6 +31,16 @@ namespace LAB2OP
                 isContract = false;
 
             return new Student(name, marks, isContract);
+        }
+
+        private double AverageMark(int[] marks)
+        {
+            int sum = 0;
+            for (int i = 0; i < marks.Length; i++)
+            {
+                sum += marks[i];
+            }
+            return (double)sum / marks.Length;
         }
     }
 }
