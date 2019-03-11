@@ -10,6 +10,7 @@ namespace LAB2OP
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
