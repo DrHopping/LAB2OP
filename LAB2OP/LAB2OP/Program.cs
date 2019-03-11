@@ -27,6 +27,7 @@ namespace LAB2OP
             {
                 students[i] = Student.FromCsv(sr.ReadLine());
             }
+            sr.Close();
             return students;
         }
 
@@ -45,5 +46,15 @@ namespace LAB2OP
             return students.OrderBy(student => student.average).OrderBy(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)/scholarshipPercentage)).ToArray();
         }
 
+        static void SaveRating(string file, Student[] scholars)
+        {
+            StreamWriter sw = new StreamWriter(OutputFile);
+            sw.WriteLine("Minimum score for scholarship is {0}", scholars.Last().average.ToString("0.00"));
+            foreach (var student in scholars)
+            {
+                sw.WriteLine("{0} : {1}", student.name, student.average.ToString("0.00"));
+            }
+            sw.Close();
+        }
     }
 }
