@@ -16,12 +16,7 @@ namespace LAB2OP
         static void Main(string[] args)
         {
             Student[] students = LoadStudentList(InputFile);
-            students = students.OrderBy(student => student.isContract).ToArray();
-            foreach (var student in students)
-            {
-                Console.WriteLine(student.name);
-            }
-            Console.ReadLine();
+            SaveRating(OutputFile, GetScholars(students));
         }
 
         static Student[] LoadStudentList(string file)
@@ -49,7 +44,7 @@ namespace LAB2OP
 
         static Student[] GetScholars(Student[] students)
         {
-            return students.OrderBy(student => student.average).OrderByDescending(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)/scholarshipPercentage)).ToArray();
+            return students.OrderByDescending(student => student.average).OrderByDescending(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)/scholarshipPercentage)).ToArray();
         }
 
         static void SaveRating(string file, Student[] scholars)
