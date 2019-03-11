@@ -2,6 +2,8 @@
 {
     class Student
     {
-
+        public string name;
+        public int[] points;
+        public bool contract;
     }
 }
