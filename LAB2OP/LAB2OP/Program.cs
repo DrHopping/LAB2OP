@@ -15,7 +15,8 @@ namespace LAB2OP
             
         static void Main(string[] args)
         {
-            
+            Student[] students = LoadStudentList(InputFile);
+            SaveRating(OutputFile, GetScholars(students));
         }
 
         static Student[] LoadStudentList(string file)
