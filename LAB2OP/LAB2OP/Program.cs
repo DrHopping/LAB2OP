@@ -44,7 +44,7 @@ namespace LAB2OP
 
         static Student[] GetScholars(Student[] students)
         {
-            return students.OrderByDescending(student => student.average).OrderByDescending(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)*scholarshipPercentage)).ToArray();
+            return students.OrderByDescending(student => student.average).OrderBy(student => student.isContract).Take((int)(NumberOfBudgetStudents(students)*scholarshipPercentage)).ToArray();
         }
 
         static void SaveRating(string file, Student[] scholars)
@@ -53,7 +53,7 @@ namespace LAB2OP
             sw.WriteLine("Minimum score for scholarship is {0}", scholars.Last().average.ToString("0.00"));
             foreach (var student in scholars)
             {
-                sw.WriteLine("{0} : {1}", student.name, student.average.ToString("0.00"));
+                sw.WriteLine("{0}: {1}", student.name, student.average.ToString("0.00"));
             }
             sw.Close();
         }
