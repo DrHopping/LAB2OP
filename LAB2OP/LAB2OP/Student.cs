@@ -7,6 +7,7 @@ namespace LAB2OP
         public int[] marks;
         public bool isContract;
         public double average;
+        public bool retakes;
 
         public Student(string name, int[] marks, bool isContract)
         {
@@ -14,7 +15,9 @@ namespace LAB2OP
             this.marks = marks;
             this.isContract = isContract;
             this.average = AverageMark(marks);
+            this.retakes = Retakes();
         }
+
 
         public static Student FromCsv(string line)
         {
@@ -42,5 +45,15 @@ namespace LAB2OP
             }
             return (double)sum / marks.Length;
         }
+
+        private bool Retakes()
+        {
+            foreach (var mark in marks)
+            {
+                if (mark < 60) return true;
+            }
+            return false;
+        }
+
     }
 }
